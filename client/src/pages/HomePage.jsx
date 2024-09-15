@@ -1,11 +1,10 @@
-import HomeScreen from './HomeScreen'
-import HomeAuthScreen from './HomeAuthScreen'
+import { useAuthStore } from '../zustand/useAuthStore'
+import HomePageAuth from './HomePageAuth'
+import HomePageMain from './HomePageMain'
 
 const HomePage = () => {
-  const user = false
+  const { user } = useAuthStore()
 
-  // If user is logged in, display the HomeScreen component, otherwise display the AuthScreen component
-  return <>{user ? <HomeScreen /> : <HomeAuthScreen />}</>
+  return <>{user ? <HomePageMain /> : <HomePageAuth />}</>
 }
-
 export default HomePage

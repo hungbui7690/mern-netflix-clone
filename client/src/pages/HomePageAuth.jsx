@@ -1,43 +1,64 @@
+import toast from 'react-hot-toast'
 import Logo from '/logo.svg'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
-const HomeAuthScreen = () => {
+const HomePageAuth = () => {
+  const navigate = useNavigate()
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    const formData = new FormData(e.target)
+    const email = formData.get('email')
+    if (!email) {
+      toast.error('Please enter a valid email address')
+      return
+    }
+    navigate('/signup?email=' + email)
+  }
+
   return (
-    <div className='relative hero-bg'>
-      <header className='flex justify-between items-center mx-auto p-10 pb-10 max-w-6xl'>
-        <Link to={'/'}>
-          <img src={Logo} alt='logo' className='w-32 md:w-52 text-red-500' />
-        </Link>
-        <Link to={'/'} className='bg-red-600 px-2 py-1 rounded text-white'>
-          {' '}
-          Sign In
-        </Link>
-      </header>
-
-      {/* Hero Section */}
-      <div className='flex flex-col justify-center items-center mb-12 h-96 text-center text-white'>
-        <h1 className='mb-4 font-bold text-4xl md:text-6xl'>
-          Unlimited movies <br /> TV shows, and more.
-        </h1>
-        <p className='mb-10 font-semibold text-lg md:text-xl'>
-          Starts at $6.99/month. Cancel anytime.
-        </p>
-        <p className='text-sm'>
-          Ready to watch? Enter your email to create or restart your membership.
-        </p>
-        <form action='' className='flex flex-wrap justify-center space-x-1 p-4'>
-          <input
-            type='email'
-            placeholder='Email address'
-            className='border-emerald-500 bg-black/70 mt-4 px-4 py-2 border rounded w-72 md:w-96'
-          />
-          <Link
-            to={'/signup'}
-            className='bg-red-600 mt-4 px-4 py-2 rounded w-72 sm:w-auto text-white'
-          >
-            Get Started
+    <div className='mx-auto w-full'>
+      <div className='h-screen hero-bg'>
+        <header className='flex justify-between items-center mx-auto mb-20 p-10 pb-10 max-w-6xl'>
+          <Link to={'/'}>
+            <img src={Logo} alt='logo' className='w-32 md:w-52 text-red-500' />
           </Link>
-        </form>
+          <Link
+            to={'/login'}
+            className='bg-red-600 px-4 py-2 rounded text-white px'
+          >
+            {' '}
+            Sign In
+          </Link>
+        </header>
+
+        {/* Hero Section */}
+        <div className='flex flex-col justify-center items-center mx-20 h-96 text-center text-white'>
+          <h1 className='mb-4 font-bold text-4xl md:text-6xl'>
+            Unlimited movies, <br /> TV shows, and more.
+          </h1>
+          <p className='mb-10 font-semibold text-lg md:text-xl'>
+            Starts at $6.99/month. Cancel anytime.
+          </p>
+          <p className='text-xs'>
+            Ready to watch? Enter your email to create or restart your
+            membership.
+          </p>
+          <form
+            onSubmit={handleSubmit}
+            className='flex flex-wrap justify-center space-x-1 px-4'
+          >
+            <input
+              type='email'
+              name='email'
+              placeholder='Email address'
+              className='border-emerald-500 bg-black/70 mt-4 px-4 py-2 border rounded w-72 md:w-96'
+            />
+            <button className='bg-red-600 mt-4 px-4 py-2 rounded w-72 sm:w-auto text-white'>
+              Get Started
+            </button>
+          </form>
+        </div>
       </div>
 
       {/* ENJOY */}
@@ -163,4 +184,4 @@ const HomeAuthScreen = () => {
   )
 }
 
-export default HomeAuthScreen
+export default HomePageAuth

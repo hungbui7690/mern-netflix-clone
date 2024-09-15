@@ -3,7 +3,7 @@ import {
   login,
   signUp,
   logout,
-  authCheck,
+  getCurrentUser,
 } from '../controller/authController.js'
 import authenticateUser from '../middleware/authMiddleware.js'
 const router = express.Router()
@@ -11,6 +11,6 @@ const router = express.Router()
 router.post('/signup', signUp)
 router.post('/login', login)
 router.post('/logout', logout)
-router.get('/authCheck', authenticateUser, authCheck)
+router.get('/me', authenticateUser, getCurrentUser)
 
 export default router

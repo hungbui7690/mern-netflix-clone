@@ -2,14 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-.hero-bg-parent {
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 94%);
-}
-
 .hero-bg {
   background-image: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.2)),
     url('/hero.png');
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 94%);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .shimmer {

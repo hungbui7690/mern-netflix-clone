@@ -75,7 +75,7 @@ export async function logout(req, res) {
   res.status(200).json({ success: true, message: 'Logged out successfully' })
 }
 
-export async function authCheck(req, res) {
-  console.log('req.user:', req.user)
+export async function getCurrentUser(req, res) {
+  // console.log('req.user:', req.user)
   res.status(200).json({ success: true, user: req.user })
 }

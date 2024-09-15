@@ -39,8 +39,11 @@
 				},
 				{
 					"name": "Login",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
-						"method": "POST",
+						"method": "GET",
 						"header": [],
 						"body": {
 							"mode": "raw",
@@ -52,13 +55,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{URL}}/auth/login",
+							"raw": "{{URL}}/auth/me",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
 								"auth",
-								"login"
+								"me"
 							]
 						},
 						"description": "### /auth/login\n\nThis endpoint is used to authenticate a user and obtain an access token.\n\n#### Request\n\n- Method: POST\n    \n- Body:\n    \n    - username (text, required): The username of the user.\n        \n    - password (text, required): The password of the user.\n        \n\n#### Response\n\nThe response is in JSON format and has the following schema:\n\n``` json\n{\n  \"_id\": \"\",\n  \"fullName\": \"\",\n  \"username\": \"\",\n  \"profilePic\": \"\"\n}\n\n ```\n\n- _id (string): The unique identifier of the authenticated user.\n    \n- fullName (string): The full name of the authenticated user.\n    \n- username (string): The username of the authenticated user.\n    \n- profilePic (string): The URL to the profile picture of the authenticated user."
@@ -81,6 +84,24 @@
 							]
 						},
 						"description": "### Logout User\n\nThis endpoint is used to log out a user from the system.\n\n#### Request Body\n\n- No request body is required for this endpoint.\n    \n\n#### Response\n\n- The response will indicate the success or failure of the logout operation."
+					},
+					"response": []
+				},
+				{
+					"name": "Get Current User",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/auth/me",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"auth",
+								"me"
+							]
+						}
 					},
 					"response": []
 				}

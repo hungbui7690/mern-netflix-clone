@@ -3,15 +3,13 @@ import HomePage from './HomePage'
 import LoginPage from './LoginPage'
 import SignUpPage from './SignUpPage'
 import NotFoundPage from './NotFoundPage'
-import HomeScreen from './HomeScreen'
-import HomeAuthScreen from './HomeAuthScreen'
+import HomePageAuth from './HomePage'
 
 export {
   SharedLayout,
   HomePage,
+  HomePageAuth,
   LoginPage,
   SignUpPage,
   NotFoundPage,
-  HomeScreen,
-  HomeAuthScreen,
 }

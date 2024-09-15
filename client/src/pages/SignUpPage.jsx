@@ -1,16 +1,25 @@
 import { Link } from 'react-router-dom'
 import Logo from '/logo.svg'
+import { useAuthStore } from '../zustand/useAuthStore'
+import { Loading } from '../components'
 
 const SignUpPage = () => {
+  const { searchParams } = new URL(document.location)
+  const { signup, isLoading } = useAuthStore()
+  const email = searchParams.get('email')
+
   const handleSignUp = (e) => {
     e.preventDefault()
+    const formData = new FormData(e.target)
+    // const data = Object.fromEntries(formData)
+    signup(formData)
   }
 
   return (
     <div className='w-full h-screen hero-bg'>
-      <header className='flex justify-between items-center mx-auto p-4 max-w-6xl'>
+      <header className='flex justify-between items-center mx-auto p-10 max-w-6xl'>
         <Link to={'/'}>
-          <img src={Logo} alt='logo' className='w-52' />
+          <img src={Logo} alt='logo' className='w-32 md:w-52' />
         </Link>
       </header>
 
@@ -34,7 +43,7 @@ const SignUpPage = () => {
                 placeholder='you@example.com'
                 id='email'
                 name='email'
-                defaultValue='user@gmail.com'
+                defaultValue={`${email ? email : 'user@gmail.com'}`}
               />
             </div>
             <div>
@@ -50,7 +59,7 @@ const SignUpPage = () => {
                 placeholder='johndoe'
                 id='username'
                 name='username'
-                defaultValue='user'
+                defaultValue={`${email ? email.split('@')[0] : 'joedoe'}`}
               />
             </div>
             <div>
@@ -72,7 +81,7 @@ const SignUpPage = () => {
             </div>
 
             <button className='bg-red-600 hover:bg-red-700 py-2 rounded-md w-full font-semibold text-white'>
-              Sign Up
+              {isLoading ? <Loading /> : 'Sign Up'}
             </button>
           </form>
           <div className='text-center text-gray-400'>

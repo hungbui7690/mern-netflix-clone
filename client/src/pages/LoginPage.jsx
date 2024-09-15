@@ -1,16 +1,22 @@
 import { Link } from 'react-router-dom'
 import Logo from '/logo.svg'
+import { useAuthStore } from '../zustand/useAuthStore'
+import { Loading } from '../components'
 
 const LoginPage = () => {
+  const { login, isLoading } = useAuthStore()
+
   const handleLogin = (e) => {
     e.preventDefault()
+    const formData = new FormData(e.target)
+    login(formData)
   }
 
   return (
     <div className='w-full h-screen hero-bg'>
-      <header className='flex justify-between items-center mx-auto p-4 max-w-6xl'>
+      <header className='flex justify-between items-center mx-auto p-10 max-w-6xl'>
         <Link to={'/'}>
-          <img src={Logo} alt='logo' className='w-52 text-red-500' />
+          <img src={Logo} alt='logo' className='w-32 md:w-52 text-red-500' />
         </Link>
       </header>
 
@@ -19,23 +25,23 @@ const LoginPage = () => {
           <h1 className='mb-4 font-bold text-2xl text-center text-white'>
             Login
           </h1>
-
           <form className='space-y-4' onSubmit={handleLogin}>
             <div>
               <label
-                htmlFor='email'
+                htmlFor='username'
                 className='block font-medium text-gray-300 text-sm'
               >
-                Email
+                Username
               </label>
               <input
-                type='email'
+                type='text'
                 className='border-gray-700 bg-transparent mt-1 px-3 py-2 border rounded-md focus:ring w-full text-white focus:outline-none'
                 placeholder='you@example.com'
-                id='email'
+                id='username'
+                name='username'
+                defaultValue={'user'}
               />
             </div>
-
             <div>
               <label
                 htmlFor='password'
@@ -48,12 +54,14 @@ const LoginPage = () => {
                 className='border-gray-700 bg-transparent mt-1 px-3 py-2 border rounded-md focus:ring w-full text-white focus:outline-none'
                 placeholder='••••••••'
                 id='password'
+                name='password'
                 autoComplete='true'
+                defaultValue='121212'
               />
             </div>
 
             <button className='bg-red-600 hover:bg-red-700 py-2 rounded-md w-full font-semibold text-white'>
-              Login
+              {isLoading ? <Loading /> : 'Login'}
             </button>
           </form>
           <div className='text-center text-gray-400'>
