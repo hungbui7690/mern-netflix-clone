@@ -7,7 +7,7 @@ function App() {
   const { user } = useAuthStore()
 
   return (
-    <div className='flex mx-auto'>
+    <div>
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<HomePage />} />

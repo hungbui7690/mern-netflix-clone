@@ -2,7 +2,7 @@ import toast from 'react-hot-toast'
 import Logo from '/logo.svg'
 import { Link, useNavigate } from 'react-router-dom'
 
-const HomePageAuth = () => {
+const HomePageNotLogin = () => {
   const navigate = useNavigate()
 
   const handleSubmit = (e) => {
@@ -184,4 +184,4 @@ const HomePageAuth = () => {
   )
 }
 
-export default HomePageAuth
+export default HomePageNotLogin

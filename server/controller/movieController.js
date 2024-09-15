@@ -2,8 +2,6 @@ import { StatusCodes } from 'http-status-codes'
 import { fetchTMDB } from '../services/tmdbServices.js'
 
 export async function getTrendingMovie(req, res) {
-  console.log('getTrendingMovie')
-
   // this will return a list of trending movies
   const data = await fetchTMDB('/trending/movie/day')
 

@@ -1,10 +1,10 @@
 import { useAuthStore } from '../zustand/useAuthStore'
-import HomePageAuth from './HomePageAuth'
-import HomePageMain from './HomePageMain'
+import HomePageNotLogin from './HomePageNotLogin'
+import HomePageLogin from './HomePageLogin'
 
 const HomePage = () => {
   const { user } = useAuthStore()
 
-  return <>{user ? <HomePageMain /> : <HomePageAuth />}</>
+  return <>{user ? <HomePageLogin /> : <HomePageNotLogin />}</>
 }
 export default HomePage

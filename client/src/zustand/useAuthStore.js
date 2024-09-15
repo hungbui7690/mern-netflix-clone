@@ -3,7 +3,7 @@ import toast from 'react-hot-toast'
 import { create } from 'zustand'
 
 export const useAuthStore = create((set) => ({
-  user: null,
+  user: JSON.parse(localStorage.getItem('user')) || null,
   isLoading: false,
   setEmail: (email) => set({ email }),
   signup: async (formData) => {
@@ -12,6 +12,7 @@ export const useAuthStore = create((set) => ({
       const res = await axiosInstance.post('/auth/signup', formData)
       set({ user: res.data.user, isLoading: false })
       toast.success('Account created successfully')
+      localStorage.setItem('user', JSON.stringify(res.data.user))
     } catch (error) {
       set({ user: null })
       toast.error(error.response.data.msg || 'Failed to create account')
@@ -25,6 +26,7 @@ export const useAuthStore = create((set) => ({
       const res = await axiosInstance.post('/auth/login', formData)
       set({ user: res.data.user })
       toast.success('Logged in successfully')
+      localStorage.setItem('user', JSON.stringify(res.data.user))
     } catch (error) {
       set({ user: null })
       toast.error(error.res.data.message || 'Failed to login')
@@ -38,6 +40,7 @@ export const useAuthStore = create((set) => ({
       await axiosInstance.post('/auth/logout')
       set({ user: null })
       toast.success('Logged out successfully')
+      localStorage.removeItem('user')
     } catch (error) {
       toast.error(error.res.data.message || 'Failed to logout')
     } finally {
@@ -49,6 +52,7 @@ export const useAuthStore = create((set) => ({
     try {
       const res = await axiosInstance.post('/auth/getCurrentUser')
       set({ user: res.data.user, isLoading: false })
+      localStorage.setItem('user', JSON.stringify(res.data.user))
     } catch (error) {
       set({ user: null })
       toast.error(error.res.data.message || 'Failed to get user')
