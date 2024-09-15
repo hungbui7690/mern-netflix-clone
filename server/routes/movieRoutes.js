@@ -6,6 +6,7 @@ import {
   getSimilarMovies,
   getTrendingMovie,
 } from '../controller/movieController.js'
+
 const router = express.Router()
 
 router.get('/trending', getTrendingMovie)

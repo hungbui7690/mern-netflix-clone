@@ -42,7 +42,7 @@ export async function getSimilarMovies(req, res) {
 export async function getMoviesByCategory(req, res) {
   const { category } = req.params
 
-  // category can be popular, top_rated, upcoming, now_playing
+  // category can be: [popular, top_rated, upcoming, now_playing]
   const data = await fetchTMDB(`/movie/${category}`, 1)
   res.status(StatusCodes.OK).json({ success: true, content: data.results })
 }

@@ -9,6 +9,7 @@ import fileUpload from 'express-fileupload'
 import { connectDB } from './db/connect.js'
 import authRouter from './routes/authRoutes.js'
 import movieRouter from './routes/movieRoutes.js'
+import tvRouter from './routes/tvRoutes.js'
 import notFoundMiddleware from './middleware/not-found.js'
 import errorHandlerMiddleware from './middleware/error-handler.js'
 
@@ -19,6 +20,7 @@ app.use(cors({ credentials: true, origin: 'http://localhost:3000' }))
 
 app.use('/api/v1/auth', authRouter)
 app.use('/api/v1/movie', movieRouter)
+app.use('/api/v1/tv', tvRouter)
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '/frontend/dist')))
