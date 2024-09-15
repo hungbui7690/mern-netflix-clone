@@ -4,7 +4,7 @@ import { UnauthenticatedError, NotFoundError } from '../errors/index.js'
 
 const authenticateUser = async (req, res, next) => {
   // get token from signed cookie
-  const token = req.signedCookies.token
+  const token = req.signedCookies.netflixToken
   if (!token) {
     throw new UnauthenticatedError('Unauthenticated - No Token Provided')
   }
