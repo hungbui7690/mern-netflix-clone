@@ -1,5 +1,11 @@
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
-import { HomePage, LoginPage, SignUpPage, NotFoundPage } from './pages/'
+import {
+  HomePage,
+  LoginPage,
+  SignUpPage,
+  NotFoundPage,
+  WatchPage,
+} from './pages/'
 import { Toaster } from 'react-hot-toast'
 import { useAuthStore } from './zustand/useAuthStore'
 
@@ -18,6 +24,10 @@ function App() {
           <Route
             path='/signup'
             element={!user ? <SignUpPage /> : <Navigate to={'/'} />}
+          />
+          <Route
+            path='/watch/:id'
+            element={user ? <WatchPage /> : <Navigate to={'/login'} />}
           />
           <Route path='*' element={<NotFoundPage />} />
         </Routes>

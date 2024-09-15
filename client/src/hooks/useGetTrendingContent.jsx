@@ -9,7 +9,6 @@ const useGetTrendingContent = () => {
   useEffect(() => {
     const getTrendingContent = async () => {
       const res = await axiosInstance.get(`/movie/trending`)
-      console.log(res.data)
       setTrendingContent(res.data.content)
     }
 

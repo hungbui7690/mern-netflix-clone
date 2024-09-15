@@ -134,13 +134,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{URL}}/movie/trending",
+							"raw": "{{URL}}/movie/trailers",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
 								"movie",
-								"trending"
+								"trailers"
 							]
 						}
 					},

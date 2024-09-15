@@ -12,11 +12,13 @@ const MovieSlider = ({ category }) => {
 
   const sliderRef = useRef(null)
 
-  // format category name: now_playing -> Now Playing
-  const formattedCategoryName =
-    category.replaceAll('_', ' ')[0].toUpperCase() +
-    category.replaceAll('_', ' ').slice(1)
-  const formattedContentType = contentType === 'movie' ? 'movies' : 'TV shows'
+  // format category name: now_playing -> Now playing
+  const formattedCategoryName = category
+    .replaceAll('_', ' ')
+    .split(' ')
+    .map((word) => word[0].toUpperCase() + word.slice(1))
+    .join(' ')
+  const formattedContentType = contentType === 'movie' ? 'Movies' : 'TV Shows'
 
   useEffect(() => {
     const getContent = async () => {
