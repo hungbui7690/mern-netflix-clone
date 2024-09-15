@@ -1,0 +1,384 @@
+{
+	"info": {
+		"_postman_id": "5c22c5bc-9606-48ec-837c-53574f262c7c",
+		"name": "Netflix Clone - MERN",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13813451"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Signup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\" : \"user@gmail.com\",\r\n    \"username\": \"user\",\r\n    \"password\": \"121212\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/auth/signup",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"auth",
+								"signup"
+							]
+						},
+						"description": "### Auth Signup\n\nThis endpoint is used to create a new user account.\n\n#### Request Body\n\n- `fullName` (string, required): The full name of the user.\n    \n- `username` (string, required): The username for the new account.\n    \n- `password` (string, required): The password for the new account.\n    \n- `confirmPassword` (string, required): The confirmation of the password.\n    \n- `gender` (string, optional): The gender of the user.\n    \n\n#### Response Body\n\n- `_id` (string): The unique identifier of the newly created user account.\n    \n- `fullName` (string): The full name of the user.\n    \n- `username` (string): The username of the user account.\n    \n- `profilePic` (string): The URL of the user's profile picture.\n    \n\n#### Response\n\n- Status: 201\n    \n- Content-Type: application/json"
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"user\",\r\n    \"password\": \"121212\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/auth/login",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						},
+						"description": "### /auth/login\n\nThis endpoint is used to authenticate a user and obtain an access token.\n\n#### Request\n\n- Method: POST\n    \n- Body:\n    \n    - username (text, required): The username of the user.\n        \n    - password (text, required): The password of the user.\n        \n\n#### Response\n\nThe response is in JSON format and has the following schema:\n\n``` json\n{\n  \"_id\": \"\",\n  \"fullName\": \"\",\n  \"username\": \"\",\n  \"profilePic\": \"\"\n}\n\n ```\n\n- _id (string): The unique identifier of the authenticated user.\n    \n- fullName (string): The full name of the authenticated user.\n    \n- username (string): The username of the authenticated user.\n    \n- profilePic (string): The URL to the profile picture of the authenticated user."
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/auth/logout",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"auth",
+								"logout"
+							]
+						},
+						"description": "### Logout User\n\nThis endpoint is used to log out a user from the system.\n\n#### Request Body\n\n- No request body is required for this endpoint.\n    \n\n#### Response\n\n- The response will indicate the success or failure of the logout operation."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Movie",
+			"item": [
+				{
+					"name": "Get Trending Movies",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/movie/trending",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"movie",
+								"trending"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Movie Trailers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/movie/trending",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"movie",
+								"trending"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Movie Details",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/movie/details/1096838",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"movie",
+								"details",
+								"1096838"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Similar Movies",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/movie/similar/533535",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"movie",
+								"similar",
+								"533535"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Movies By Category",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/movie/popular",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"movie",
+								"popular"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "TV",
+			"item": [
+				{
+					"name": "Get Trending TVs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/tv/trending",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"tv",
+								"trending"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get TV Trailers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/tv/trailers/1429",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"tv",
+								"trailers",
+								"1429"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get TV Details",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/tv/details/1429",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"tv",
+								"details",
+								"1429"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Similar TVs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/tv/similar/1429",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"tv",
+								"similar",
+								"1429"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get TVs By Category",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/tv/popular",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"tv",
+								"popular"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Search",
+			"item": [
+				{
+					"name": "Search Person",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/search/person/mike",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"search",
+								"person",
+								"mike"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search Movie",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/search/movie/shark",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"search",
+								"movie",
+								"shark"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search Tv Show",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/search/tv/friends",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"search",
+								"tv",
+								"friends"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Search History",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/search/history",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"search",
+								"history"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove Item From Search History",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/search/history/1127006",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"search",
+								"history",
+								"1127006"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
