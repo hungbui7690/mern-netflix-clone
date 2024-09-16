@@ -4,6 +4,8 @@ import LoginPage from './LoginPage'
 import SignUpPage from './SignUpPage'
 import NotFoundPage from './NotFoundPage'
 import WatchPage from './WatchPage'
+import SearchPage from './SearchPage'
+import SearchHistoryPage from './SearchHistoryPage'
 
 export {
   SharedLayout,
@@ -12,4 +14,6 @@ export {
   SignUpPage,
   NotFoundPage,
   WatchPage,
+  SearchPage,
+  SearchHistoryPage,
 }

@@ -5,6 +5,8 @@ import {
   SignUpPage,
   NotFoundPage,
   WatchPage,
+  SearchPage,
+  SearchHistoryPage,
 } from './pages/'
 import { Toaster } from 'react-hot-toast'
 import { useAuthStore } from './zustand/useAuthStore'
@@ -26,9 +28,18 @@ function App() {
             element={!user ? <SignUpPage /> : <Navigate to={'/'} />}
           />
           <Route
+            path='/search'
+            element={user ? <SearchPage /> : <Navigate to={'/login'} />}
+          />
+          <Route
+            path='/history'
+            element={user ? <SearchHistoryPage /> : <Navigate to={'/login'} />}
+          />
+          <Route
             path='/watch/:id'
             element={user ? <WatchPage /> : <Navigate to={'/login'} />}
           />
+
           <Route path='*' element={<NotFoundPage />} />
         </Routes>
       </BrowserRouter>
