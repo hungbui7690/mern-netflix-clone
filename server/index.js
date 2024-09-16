@@ -4,6 +4,7 @@ import dotenv from 'dotenv'
 dotenv.config()
 import 'express-async-errors'
 import path from 'path'
+import { fileURLToPath } from 'url'
 import cookieParser from 'cookie-parser'
 import cors from 'cors'
 import fileUpload from 'express-fileupload'
@@ -15,6 +16,11 @@ import searchRouter from './routes/searchRoutes.js'
 import notFoundMiddleware from './middleware/not-found.js'
 import errorHandlerMiddleware from './middleware/error-handler.js'
 
+const __filename = fileURLToPath(import.meta.url) // get the resolved path to the file
+const __dirname = path.dirname(__filename) // get the name of the directory
+// console.log(path.join(__dirname, '../client', 'dist', 'index.html'))
+app.use(express.static(path.join(__dirname, '../client/dist')))
+
 app.use(express.json())
 app.use(fileUpload({ useTempFiles: true }))
 app.use(cookieParser(process.env.JWT_SECRET))
@@ -25,13 +31,12 @@ app.use('/api/v1/movie', movieRouter)
 app.use('/api/v1/tv', tvRouter)
 app.use('/api/v1/search', searchRouter)
 
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '/frontend/dist')))
-
-  app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'frontend', 'dist', 'index.html'))
-  })
-}
+app.get('*', (req, res) => {
+  res.sendFile(
+    // path.join(__dirname, '../client', 'index.html')
+    path.join(__dirname, '../client', 'dist', 'index.html')
+  )
+})
 
 app.use(notFoundMiddleware)
 app.use(errorHandlerMiddleware)
